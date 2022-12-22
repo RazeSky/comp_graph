@@ -176,6 +176,17 @@ public:
 
 	void update_data()
 	{
+		Xmin = WINDOW_SIZE;
+		Ymin = WINDOW_SIZE;
+		Xmax = -1;
+		Ymax = -1;
+		for (int i = 0; i < point_number; i++)
+		{
+			if (v[i]->x < Xmin)	Xmin = v[i]->x;
+			if (v[i]->y < Ymin)	Ymin = v[i]->y;
+			if (v[i]->x >= Xmax) Xmax = v[i]->x;
+			if (v[i]->y >= Ymax) Ymax = v[i]->y;
+		}
 		int i = 0;
 		float M[3] = { v[i]->x, v[i]->y, v[i]->z };
 		int ai = i - 1;
@@ -206,24 +217,6 @@ public:
 		}
 
 
-		Xmin = WINDOW_SIZE;
-		Ymin = WINDOW_SIZE;
-		Xmax = -1;
-		Ymax = -1;
-		for (int i = 0; i < point_number; i++)
-		{
-			if (v[i]->x < Xmin)
-				Xmin = v[i]->x;
-
-			if (v[i]->y < Ymin)
-				Ymin = v[i]->y;
-
-			if (v[i]->x >= Xmax)
-				Xmax = v[i]->x;
-
-			if (v[i]->y >= Ymax)
-				Ymax = v[i]->y;
-		}
 	}
 
 };
